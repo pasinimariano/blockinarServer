@@ -36,6 +36,7 @@ get_routes(api, AdminModel, db)
 """
 with api.app_context():
     db.create_all()
+    
 """
 if __name__ == "__main__":
     debug = api.config["DEBUG"]
