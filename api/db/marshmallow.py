@@ -1,3 +1,15 @@
+def set_admin_schema(marshmallow, admin_model):
+    class AdminSchema(marshmallow.Schema):
+        class Meta:
+            fields = ("id",
+                      "first_name",
+                      "last_name",
+                      "email")
+            model = admin_model
+
+    return AdminSchema
+
+
 def set_bookings_schema(marshmallow, bookings_model):
     class BookingsSchema(marshmallow.Schema):
         class Meta:

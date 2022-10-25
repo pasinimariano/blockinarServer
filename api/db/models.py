@@ -1,3 +1,15 @@
+def admin(db):
+    class Admin(db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        first_name = db.Column(db.String(60), nullable=False)
+        last_name = db.Column(db.String(60), nullable=False)
+        email = db.Column(db.String(128), nullable=False, unique=True)
+        password = db.Column(db.String(128), nullable=False)
+        role = db.Column(db.Integer(), nullable=False)
+
+    return Admin
+
+
 def bookings(db):
     class Bookings(db.Model):
         id = db.Column(db.Integer, primary_key=True)
