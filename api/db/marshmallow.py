@@ -53,11 +53,13 @@ def set_categories_schema(marshmallow, categories_model, many):
     return categories_schema
 
 
-def set_status_schema(marshmallow, status_model):
+def set_status_schema(marshmallow, status_model, many):
     class StatusSchema(marshmallow.Schema):
         class Meta:
             fields = ("id",
                       "booking_status")
             model = status_model
 
-    return StatusSchema
+    status_schema = StatusSchema(many=many)
+
+    return status_schema

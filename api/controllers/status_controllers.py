@@ -3,31 +3,31 @@ from functools import wraps
 
 from api.utils.send_errors import send_invalid_error, send_internal_error
 from api.utils.token_generator import token_decode, token_generator
-from api.services.CategoriesService import CategoriesService
+from api.services.StatusService import StatusService
 
 
-def get_all_categories_controller(api, db, categories_model, marshmallow):
+def get_all_status_controller(api, db, status_model, marshmallow):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
-                    service = CategoriesService(db, categories_model)
+                    service = StatusService(db, status_model)
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    all_categories = service.get_all_categories()
+                    all_status = service.get_all_status()
 
-                    if all_categories["ok"] is False:
-                        return send_invalid_error(all_categories["error"])
+                    if all_status["ok"] is False:
+                        return send_invalid_error(all_status["error"])
 
-                    serialized_categories = marshmallow.dump(all_categories["categories"])
+                    serialized_categories = marshmallow.dump(all_status["status"])
                     new_token = token_generator(email)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
 
-                    return func({"categories": serialized_categories, "token": new_token["token"]})
+                    return func({"status": serialized_categories, "token": new_token["token"]})
 
                 except Exception as error:
                     return send_internal_error(error)
@@ -36,23 +36,22 @@ def get_all_categories_controller(api, db, categories_model, marshmallow):
     return decorator
 
 
-def create_category_controller(api, db, categories_model):
+def create_status_controller(api, db, status_model):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
                     req = request.json
-                    category_name, price = req["category_name"], req["price"]
+                    booking_status = req["booking_status"]
+                    service = StatusService(db, status_model, booking_status=booking_status)
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = CategoriesService(db, categories_model, category_name=category_name, price=price)
+                    new_status = service.create_new_status()
 
-                    new_category = service.create_new_category()
-
-                    if new_category["ok"] is False:
-                        return send_invalid_error(new_category["error"])
+                    if new_status["ok"] is False:
+                        return send_invalid_error(new_status["error"])
 
                     new_token = token_generator(email)
 
@@ -68,24 +67,24 @@ def create_category_controller(api, db, categories_model):
     return decorator
 
 
-def update_category_controller(api, db, categories_model):
+def update_status_controller(api, db, status_model):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
-                    category_id = request.args.get("id")
+                    status_id = request.args.get("id")
                     req = request.json
-                    category_name, price = req["category_name"], req["price"]
+                    booking_status = req["booking_status"]
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = CategoriesService(db, categories_model, category_id, category_name, price)
+                    service = StatusService(db, status_model, status_id, booking_status)
 
-                    update_category = service.update_category()
+                    update_status = service.update_status()
 
-                    if update_category["ok"] is False:
-                        return send_invalid_error(update_category["error"])
+                    if update_status["ok"] is False:
+                        return send_invalid_error(update_status["error"])
 
                     new_token = token_generator(email)
 
@@ -101,22 +100,22 @@ def update_category_controller(api, db, categories_model):
     return decorator
 
 
-def delete_category_controller(api, db, categories_model):
+def delete_status_controller(api, db, status_model):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
-                    category_id = request.args.get("id")
+                    status_id = request.args.get("id")
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = CategoriesService(db, categories_model, category_id)
+                    service = StatusService(db, status_model, status_id)
 
-                    delete_category = service.delete_category()
+                    delete_status = service.delete_status()
 
-                    if delete_category["ok"] is False:
-                        return send_invalid_error(delete_category["error"])
+                    if delete_status["ok"] is False:
+                        return send_invalid_error(delete_status["error"])
 
                     new_token = token_generator(email)
 

@@ -18,15 +18,7 @@ RoomsModel = rooms(db)
 CategoriesModel = categories(db)
 StatusModel = status(db)
 
-"""marshmallow = Marshmallow(api)
-
-get_admin_schema = set_admin_schema(marshmallow, AdminModel)
-get_bookings_schema = set_bookings_schema(marshmallow, BookingsModel)
-get_rooms_schema = set_rooms_schema(marshmallow, RoomsModel)
-get_categories_schema = set_categories_schema(marshmallow, CategoriesModel)
-get_status_schema = set_status_schema(marshmallow, StatusModel)"""
-
-get_routes(api, db, AdminModel, CategoriesModel)
+get_routes(api, db, AdminModel, CategoriesModel, StatusModel)
 """
 with api.app_context():
     db.create_all()
