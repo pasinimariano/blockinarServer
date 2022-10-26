@@ -44,10 +44,13 @@ def set_categories_schema(marshmallow, categories_model):
     class CategoriesSchema(marshmallow.Schema):
         class Meta:
             fields = ("id",
-                      "category_name")
+                      "category_name",
+                      "price")
             model = categories_model
 
-    return CategoriesSchema
+    categories_schema = CategoriesSchema(many=True)
+
+    return categories_schema
 
 
 def set_status_schema(marshmallow, status_model):

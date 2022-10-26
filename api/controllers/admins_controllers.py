@@ -2,7 +2,8 @@ from flask import request
 from functools import wraps
 
 from api.utils.send_errors import send_invalid_error, send_internal_error
-from api.utils.hash_password import hash_password
+from api.utils.hash_password import hash_password, check_password
+from api.utils.token_generator import token_generator
 from api.services.AdminService import AdminService
 
 
@@ -18,7 +19,7 @@ def create_admin_controller(api, admin_model, db):
 
                     hashed_password = hash_password(password)
 
-                    service = AdminService(api, admin_model, db, hashed_password, email, first_name, last_name, role)
+                    service = AdminService(admin_model, db, hashed_password, email, first_name, last_name, role)
 
                     new_admin = service.create_new_admin()
 
@@ -33,3 +34,37 @@ def create_admin_controller(api, admin_model, db):
         return wrapper
     return decorator
 
+
+def login_admin_controller(api, db, admin_model):
+    def decorator(func):
+        @wraps(func)
+        def wrapper():
+            with api.app_context():
+                try:
+                    req = request.json
+                    email, password = req["email"], req["password"]
+
+                    service = AdminService(admin_model, db, email)
+
+                    res = service.get_admin_by_email()
+
+                    if res["ok"] is False:
+                        return send_invalid_error(res["error"])
+
+                    password_validator = check_password(password, res["admin"].password)
+
+                    if password_validator is False:
+                        return send_invalid_error("Incorrect password")
+
+                    token = token_generator(email)
+
+                    if token["ok"] is False:
+                        return send_invalid_error(token["error"])
+
+                    return func({"token": token["token"]})
+
+                except Exception as error:
+                    return send_internal_error(error)
+
+        return wrapper
+    return decorator

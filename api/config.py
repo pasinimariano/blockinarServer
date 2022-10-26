@@ -5,7 +5,6 @@ ENV = dotenv_values()
 
 
 class Config:
-    SECRET_KEY = ENV["SECRET_KEY"]
     "especificar el domaing de cookie"
     SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME")
     SQLALCHEMY_DATABASE_URI = ENV["SQLALCHEMY_DATABASE_URI"]
