@@ -24,3 +24,9 @@ def token_generator(email):
 
     except Exception as error:
         return {"ok": False, "error": error}
+
+
+def token_decode(token):
+    decoded_token = jwt.decode(token, options={"verify_signature": False})
+
+    return decoded_token["sub"]

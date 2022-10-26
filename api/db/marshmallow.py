@@ -40,7 +40,7 @@ def set_rooms_schema(marshmallow, rooms_model):
     return RoomsSchema
 
 
-def set_categories_schema(marshmallow, categories_model):
+def set_categories_schema(marshmallow, categories_model, many):
     class CategoriesSchema(marshmallow.Schema):
         class Meta:
             fields = ("id",
@@ -48,7 +48,7 @@ def set_categories_schema(marshmallow, categories_model):
                       "price")
             model = categories_model
 
-    categories_schema = CategoriesSchema(many=True)
+    categories_schema = CategoriesSchema(many=many)
 
     return categories_schema
 

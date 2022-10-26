@@ -13,7 +13,7 @@ def token_validator():
     def decorator(func):
         @wraps(func)
         def token_required():
-            token = request.args.get("token")
+            token = request.headers.get('token')
             if not token or token is None:
                 return send_invalid_error("Token is missing")
 
