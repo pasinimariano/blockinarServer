@@ -8,4 +8,4 @@ def get_routes(api):
     admins_routes(api)
     categories_routes(api)
     status_routes(api)
-
+    rooms_routes(api)

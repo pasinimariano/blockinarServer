@@ -29,19 +29,19 @@ class Rooms(db.Model):
     occupancy = db.Column(db.Integer)
     max_occupancy = db.Column(db.Integer)
     category_id = db.Column(db.Integer, db.ForeignKey("categories.id"))
-    booking = db.relationship("Bookings", backref="booking", cascade="all, delete-orphan", lazy='dynamic')
+    bookings = db.relationship("Bookings", backref="room")
 
 
 class Categories(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(60), unique=True, nullable=False)
     price = db.Column(db.Integer)
-    room = db.relationship("Rooms", backref="room", cascade="all, delete-orphan", lazy='dynamic')
+    rooms = db.relationship("Rooms", backref="category")
 
 
 class Status(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     booking_status = db.Column(db.String(60), unique=True, nullable=False)
-    bookings = db.relationship("Bookings", backref="booking_status", lazy=True)
+    bookings = db.relationship("Bookings", backref="booking_status")
 
 

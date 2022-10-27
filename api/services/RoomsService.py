@@ -36,4 +36,34 @@ class RoomsService:
             print(" * Error when trying to create Room")
             return {"ok": False, "error": error}
 
+    def update_room(self):
+        try:
+            room = Rooms.query.filter_by(id=self.room_id).first()
+            room.occupancy = self.occupancy
+            room.max_occupancy = self.max_occupancy
+            room.category_id = self.category_id
+
+            db.session.commit()
+
+            print(" * Room updated successfully")
+            return {"ok": True, "msg": "Success"}
+
+        except Exception as error:
+            print(" * Error when trying to update Room")
+            return {"ok": False, "error": error}
+
+    def delete_room(self):
+        try:
+            room = Rooms.query.filter_by(id=self.room_id).first()
+
+            db.session.delete(room)
+            db.session.commit()
+
+            print(" * Room deleted successfully")
+            return {"ok": True, "msg": "Success"}
+
+        except Exception as error:
+            print(" * Error when trying to delete Room")
+            return {"ok": False, "error": error}
+
 

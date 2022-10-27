@@ -26,8 +26,7 @@ def get_all_rooms_controller(api):
 
                     serialized_rooms = marshmallow.dump(all_rooms["rooms"])
                     new_token = token_generator(email)
-                    print("all", all_rooms)
-                    print(serialized_rooms)
+
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
 
@@ -69,6 +68,71 @@ def create_room_controller(api):
 
         return wrapper
     return decorator
+
+
+def update_room_controller(api):
+    def decorator(func):
+        @wraps(func)
+        def wrapper():
+            with api.app_context():
+                try:
+                    room_id = request.args.get("id")
+                    req = request.json
+                    occupancy, max_occupancy, category_id = req["occupancy"], req["max_occupancy"], req["category_id"]
+                    token = request.headers.get('token')
+                    email = token_decode(token)
+
+                    service = RoomsService(room_id, occupancy, max_occupancy, category_id)
+
+                    update_room = service.update_room()
+
+                    if update_room["ok"] is False:
+                        return send_invalid_error(update_room["error"])
+
+                    new_token = token_generator(email)
+
+                    if new_token["ok"] is False:
+                        return send_invalid_error(new_token["error"])
+
+                    return func({"msg": "Success", "token": new_token["token"]})
+
+                except Exception as error:
+                    return send_internal_error(error)
+
+        return wrapper
+    return decorator
+
+
+def delete_room_controller(api):
+    def decorator(func):
+        @wraps(func)
+        def wrapper():
+            with api.app_context():
+                try:
+                    room_id = request.args.get("id")
+                    token = request.headers.get('token')
+                    email = token_decode(token)
+
+                    service = RoomsService(room_id)
+
+                    delete_room = service.delete_room()
+
+                    if delete_room["ok"] is False:
+                        return send_invalid_error(delete_room["error"])
+
+                    new_token = token_generator(email)
+
+                    if new_token["ok"] is False:
+                        return send_invalid_error(new_token["error"])
+
+                    return func({"msg": "Success", "token": new_token["token"]})
+
+                except Exception as error:
+                    return send_internal_error(error)
+
+        return wrapper
+    return decorator
+
 
 
 
