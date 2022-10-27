@@ -20,4 +20,4 @@ class DevConfig(Config):
     ENV = "development"
     DEBUG = True
     TESTING = True
-    PORT = 3004
+    PORT = 3001

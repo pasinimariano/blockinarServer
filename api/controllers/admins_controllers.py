@@ -7,7 +7,7 @@ from api.utils.token_generator import token_generator
 from api.services.AdminService import AdminService
 
 
-def create_admin_controller(api, admin_model, db):
+def create_admin_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -19,7 +19,7 @@ def create_admin_controller(api, admin_model, db):
 
                     hashed_password = hash_password(password)
 
-                    service = AdminService(admin_model, db, hashed_password, email, first_name, last_name, role)
+                    service = AdminService(email, hashed_password, first_name, last_name, role)
 
                     new_admin = service.create_new_admin()
 
@@ -35,7 +35,7 @@ def create_admin_controller(api, admin_model, db):
     return decorator
 
 
-def login_admin_controller(api, db, admin_model):
+def login_admin_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -44,7 +44,7 @@ def login_admin_controller(api, db, admin_model):
                     req = request.json
                     email, password = req["email"], req["password"]
 
-                    service = AdminService(admin_model, db, email)
+                    service = AdminService(email)
 
                     res = service.get_admin_by_email()
 

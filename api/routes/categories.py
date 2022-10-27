@@ -9,10 +9,10 @@ from api.controllers.categories_controllers import get_all_categories_controller
     delete_category_controller
 
 
-def categories_routes(api, db, categories_model, marshmallow):
+def categories_routes(api):
     @api.route("/categories", methods=["GET"])
     @token_validator()
-    @get_all_categories_controller(api, db, categories_model, marshmallow)
+    @get_all_categories_controller(api)
     def get_all_categories(response):
         return make_response(
             response,
@@ -22,7 +22,7 @@ def categories_routes(api, db, categories_model, marshmallow):
     @api.route("/categories/create", methods=["POST"])
     @data_validator(create_category_schema)
     @token_validator()
-    @create_category_controller(api, db, categories_model)
+    @create_category_controller(api)
     def create_category(response):
         return make_response(
             response,
@@ -32,7 +32,7 @@ def categories_routes(api, db, categories_model, marshmallow):
     @api.route("/categories/update", methods=["PUT"])
     @data_validator(create_category_schema)
     @token_validator()
-    @update_category_controller(api, db, categories_model)
+    @update_category_controller(api)
     def update_category(response):
         return make_response(
             response,
@@ -41,7 +41,7 @@ def categories_routes(api, db, categories_model, marshmallow):
 
     @api.route("/categories/delete", methods=["DELETE"])
     @token_validator()
-    @delete_category_controller(api, db, categories_model)
+    @delete_category_controller(api)
     def delete_category(response):
         return make_response(
             response,

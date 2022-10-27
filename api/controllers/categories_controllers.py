@@ -4,15 +4,18 @@ from functools import wraps
 from api.utils.send_errors import send_invalid_error, send_internal_error
 from api.utils.token_generator import token_decode, token_generator
 from api.services.CategoriesService import CategoriesService
+from api.db.marshmallows import CategoriesSchema
+
+marshmallow = CategoriesSchema(many=True)
 
 
-def get_all_categories_controller(api, db, categories_model, marshmallow):
+def get_all_categories_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
-                    service = CategoriesService(db, categories_model)
+                    service = CategoriesService()
                     token = request.headers.get('token')
                     email = token_decode(token)
 
@@ -36,7 +39,7 @@ def get_all_categories_controller(api, db, categories_model, marshmallow):
     return decorator
 
 
-def create_category_controller(api, db, categories_model):
+def create_category_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -47,7 +50,7 @@ def create_category_controller(api, db, categories_model):
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = CategoriesService(db, categories_model, category_name=category_name, price=price)
+                    service = CategoriesService(category_name=category_name, price=price)
 
                     new_category = service.create_new_category()
 
@@ -68,7 +71,7 @@ def create_category_controller(api, db, categories_model):
     return decorator
 
 
-def update_category_controller(api, db, categories_model):
+def update_category_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -80,7 +83,7 @@ def update_category_controller(api, db, categories_model):
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = CategoriesService(db, categories_model, category_id, category_name, price)
+                    service = CategoriesService(category_id, category_name, price)
 
                     update_category = service.update_category()
 
@@ -101,7 +104,7 @@ def update_category_controller(api, db, categories_model):
     return decorator
 
 
-def delete_category_controller(api, db, categories_model):
+def delete_category_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -111,7 +114,7 @@ def delete_category_controller(api, db, categories_model):
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = CategoriesService(db, categories_model, category_id)
+                    service = CategoriesService(category_id)
 
                     delete_category = service.delete_category()
 

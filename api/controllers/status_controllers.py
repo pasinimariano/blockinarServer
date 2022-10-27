@@ -4,15 +4,18 @@ from functools import wraps
 from api.utils.send_errors import send_invalid_error, send_internal_error
 from api.utils.token_generator import token_decode, token_generator
 from api.services.StatusService import StatusService
+from api.db.marshmallows import StatusSchema
+
+marshmallow = StatusSchema(many=True)
 
 
-def get_all_status_controller(api, db, status_model, marshmallow):
+def get_all_status_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
-                    service = StatusService(db, status_model)
+                    service = StatusService()
                     token = request.headers.get('token')
                     email = token_decode(token)
 
@@ -36,7 +39,7 @@ def get_all_status_controller(api, db, status_model, marshmallow):
     return decorator
 
 
-def create_status_controller(api, db, status_model):
+def create_status_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -44,7 +47,7 @@ def create_status_controller(api, db, status_model):
                 try:
                     req = request.json
                     booking_status = req["booking_status"]
-                    service = StatusService(db, status_model, booking_status=booking_status)
+                    service = StatusService(booking_status=booking_status)
                     token = request.headers.get('token')
                     email = token_decode(token)
 
@@ -67,7 +70,7 @@ def create_status_controller(api, db, status_model):
     return decorator
 
 
-def update_status_controller(api, db, status_model):
+def update_status_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -79,7 +82,7 @@ def update_status_controller(api, db, status_model):
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = StatusService(db, status_model, status_id, booking_status)
+                    service = StatusService(status_id, booking_status)
 
                     update_status = service.update_status()
 
@@ -100,7 +103,7 @@ def update_status_controller(api, db, status_model):
     return decorator
 
 
-def delete_status_controller(api, db, status_model):
+def delete_status_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -110,7 +113,7 @@ def delete_status_controller(api, db, status_model):
                     token = request.headers.get('token')
                     email = token_decode(token)
 
-                    service = StatusService(db, status_model, status_id)
+                    service = StatusService(status_id)
 
                     delete_status = service.delete_status()
 
