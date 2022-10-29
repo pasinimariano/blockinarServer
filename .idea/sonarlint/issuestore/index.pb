@@ -1,6 +1,4 @@
 
-=
-api/config.py,a/3/a3fb1b383c3b498daaabedc2b5a223d2b85bef65
 M
 api/services/StatusService.py,0/b/0b3eac52ccd107db79961aebf637bad0f30b3eeb
 Q
@@ -55,5 +53,7 @@ W
 'api/controllers/bookings_controllers.py,e/b/eb3aec6ca9b2dfe8a5e3b79901d161ee2a27f096
 U
 %api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
-<
-api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060
+@
+requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
+8
+Procfile,b/c/bc3c68e880d1a01632bce79f69dd1387c7ba9c54
