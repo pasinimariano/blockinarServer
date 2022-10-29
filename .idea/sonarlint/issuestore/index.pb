@@ -31,7 +31,5 @@ K
 api/schemas/rooms_schema.py,0/9/093cc21bdbe7477736a32959caec10b988c93ad1
 @
 requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
-<
-api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060
 7
 main.py,f/1/f1bdda93d9a278e358509d498e17d97764c1fb29

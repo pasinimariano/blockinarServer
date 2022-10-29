@@ -10,7 +10,7 @@ ENV = dotenv_values()
 api = Flask(__name__)
 CORS(api)
 
-if ENV["ENVIRONMENT"] == "development":
+if api.config.get("ENVIRONMENT") == "development":
     api.config.from_object("config.DevConfig")
 
     db.init_app(api)
