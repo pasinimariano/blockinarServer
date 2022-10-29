@@ -1,6 +1,4 @@
 
-<
-api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060
 =
 api/config.py,a/3/a3fb1b383c3b498daaabedc2b5a223d2b85bef65
 M
@@ -35,5 +33,27 @@ U
 %api/controllers/status_controllers.py,8/c/8cd3f2fd4e1e8624e4d7885f305b9bc755c9417a
 Y
 )api/controllers/categories_controllers.py,e/9/e936924ce1d3b69a84821f5106f1605b30b14be9
+L
+api/schemas/admin_schemas.py,4/8/4898212c7ffe264f15a1fd754c380d0a7bb8a487
+Q
+!api/schemas/categories_schemas.py,5/5/555b8cd9da2a322d6a3089af2cd50a3978bf28da
+C
+api/routes/rooms.py,b/4/b4c378b5667a53aa44095c824bc33678cbfc0dc9
+M
+api/schemas/status_schemas.py,6/e/6e83e5b043d83bf8f816594425b9b80bdba50660
+O
+api/schemas/bookings_schemas.py,4/a/4a59644fd700ee2920a59046bef377e786a77266
+F
+api/routes/bookings.py,7/8/789a18ba4f2af212d06b86275e5356a8eac39e05
+@
+api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
+O
+api/services/BookingsService.py,6/0/605e557ccb7497b9bd37b9f088728a9d6140aa60
+K
+api/schemas/rooms_schema.py,0/9/093cc21bdbe7477736a32959caec10b988c93ad1
+W
+'api/controllers/bookings_controllers.py,e/b/eb3aec6ca9b2dfe8a5e3b79901d161ee2a27f096
 U
 %api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
+<
+api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060

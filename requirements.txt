@@ -1,17 +1,22 @@
 alembic==1.8.1
+-e git+https://github.com/pasinimariano/blockinarServer.git@5b1ab7c9b0e961dc96b9037202e2133172352f9c#egg=blockinar_server
 Cerberus==1.3.4
 cffi==1.15.1
 click==8.1.3
 cryptography==38.0.1
 Flask==2.2.2
 Flask-Cors==3.0.10
+flask-marshmallow==0.14.0
+Flask-Migrate==3.1.0
 Flask-SQLAlchemy==3.0.2
 greenlet==1.1.3.post0
 itsdangerous==2.1.2
 Jinja2==3.1.2
+jwt==1.3.1
 Mako==1.2.3
 MarkupSafe==2.1.1
 marshmallow==3.18.0
+marshmallow-sqlalchemy==0.28.1
 packaging==21.3
 passlib==1.7.4
 pycparser==2.21
