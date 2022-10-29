@@ -25,7 +25,7 @@ def get_all_status_controller(api):
                         return send_invalid_error(all_status["error"])
 
                     serialized_categories = marshmallow.dump(all_status["status"])
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -56,7 +56,7 @@ def create_status_controller(api):
                     if new_status["ok"] is False:
                         return send_invalid_error(new_status["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -89,7 +89,7 @@ def update_status_controller(api):
                     if update_status["ok"] is False:
                         return send_invalid_error(update_status["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -120,7 +120,7 @@ def delete_status_controller(api):
                     if delete_status["ok"] is False:
                         return send_invalid_error(delete_status["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])

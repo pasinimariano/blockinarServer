@@ -1,24 +1,21 @@
 import jwt
 from flask import request
 from functools import wraps
-from dotenv import dotenv_values
 
 from api.utils.send_errors import send_invalid_error
 
-ENV = dotenv_values()
-SECRET_KEY = ENV["SECRET_KEY"]
 
-
-def token_validator():
+def token_validator(api):
     def decorator(func):
         @wraps(func)
         def token_required():
+            secret_key = api.config.get("SECRET_KEY")
             token = request.headers.get('token')
             if not token or token is None:
                 return send_invalid_error("Token is missing")
 
             try:
-                jwt.decode(token, SECRET_KEY, algorithms=["HS256"])
+                jwt.decode(token, secret_key, algorithms=["HS256"])
 
             except jwt.ExpiredSignatureError:
                 return send_invalid_error("Token is expired")

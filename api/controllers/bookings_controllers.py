@@ -25,7 +25,7 @@ def get_all_rooms_controller(api):
                         return send_invalid_error(all_bookings["error"])
 
                     serialized_bookings = marshmallow.dump(all_bookings["bookings"])
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -63,7 +63,7 @@ def create_booking_controller(api):
                     if new_booking["ok"] is False:
                         return send_invalid_error(new_booking["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -77,7 +77,7 @@ def create_booking_controller(api):
     return decorator
 
 
-def update_room_controller(api):
+def update_booking_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -101,7 +101,7 @@ def update_room_controller(api):
                     if update_booking["ok"] is False:
                         return send_invalid_error(update_booking["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -115,7 +115,7 @@ def update_room_controller(api):
     return decorator
 
 
-def delete_room_controller(api):
+def delete_booking_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
@@ -132,7 +132,7 @@ def delete_room_controller(api):
                     if delete_booking["ok"] is False:
                         return send_invalid_error(delete_booking["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])

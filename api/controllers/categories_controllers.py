@@ -25,7 +25,7 @@ def get_all_categories_controller(api):
                         return send_invalid_error(all_categories["error"])
 
                     serialized_categories = marshmallow.dump(all_categories["categories"])
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -57,7 +57,7 @@ def create_category_controller(api):
                     if new_category["ok"] is False:
                         return send_invalid_error(new_category["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -90,7 +90,7 @@ def update_category_controller(api):
                     if update_category["ok"] is False:
                         return send_invalid_error(update_category["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -121,7 +121,7 @@ def delete_category_controller(api):
                     if delete_category["ok"] is False:
                         return send_invalid_error(delete_category["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])

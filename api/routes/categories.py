@@ -11,7 +11,7 @@ from api.controllers.categories_controllers import get_all_categories_controller
 
 def categories_routes(api):
     @api.route("/categories", methods=["GET"])
-    @token_validator()
+    @token_validator(api)
     @get_all_categories_controller(api)
     def get_all_categories(response):
         return make_response(
@@ -21,7 +21,7 @@ def categories_routes(api):
 
     @api.route("/categories/create", methods=["POST"])
     @data_validator(create_category_schema)
-    @token_validator()
+    @token_validator(api)
     @create_category_controller(api)
     def create_category(response):
         return make_response(
@@ -31,7 +31,7 @@ def categories_routes(api):
 
     @api.route("/categories/update", methods=["PUT"])
     @data_validator(create_category_schema)
-    @token_validator()
+    @token_validator(api)
     @update_category_controller(api)
     def update_category(response):
         return make_response(
@@ -40,7 +40,7 @@ def categories_routes(api):
         )
 
     @api.route("/categories/delete", methods=["DELETE"])
-    @token_validator()
+    @token_validator(api)
     @delete_category_controller(api)
     def delete_category(response):
         return make_response(

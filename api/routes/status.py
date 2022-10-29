@@ -11,7 +11,7 @@ from api.controllers.status_controllers import get_all_status_controller,\
 
 def status_routes(api):
     @api.route("/status", methods=["GET"])
-    @token_validator()
+    @token_validator(api)
     @get_all_status_controller(api)
     def get_all_status(response):
         return make_response(
@@ -20,7 +20,7 @@ def status_routes(api):
         )
 
     @api.route("/status/create", methods=["POST"])
-    @token_validator()
+    @token_validator(api)
     @data_validator(create_status_schema)
     @create_status_controller(api)
     def create_status(response):
@@ -31,7 +31,7 @@ def status_routes(api):
 
     @api.route("/status/update", methods=["PUT"])
     @data_validator(create_status_schema)
-    @token_validator()
+    @token_validator(api)
     @update_status_controller(api)
     def update_status(response):
         return make_response(
@@ -40,7 +40,7 @@ def status_routes(api):
         )
 
     @api.route("/status/delete", methods=["DELETE"])
-    @token_validator()
+    @token_validator(api)
     @delete_status_controller(api)
     def delete_status(response):
         return make_response(

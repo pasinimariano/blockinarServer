@@ -25,7 +25,7 @@ def get_all_rooms_controller(api):
                         return send_invalid_error(all_rooms["error"])
 
                     serialized_rooms = marshmallow.dump(all_rooms["rooms"])
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -56,7 +56,7 @@ def create_room_controller(api):
                     if new_room["ok"] is False:
                         return send_invalid_error(new_room["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -89,7 +89,7 @@ def update_room_controller(api):
                     if update_room["ok"] is False:
                         return send_invalid_error(update_room["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])
@@ -120,7 +120,7 @@ def delete_room_controller(api):
                     if delete_room["ok"] is False:
                         return send_invalid_error(delete_room["error"])
 
-                    new_token = token_generator(email)
+                    new_token = token_generator(email, api)
 
                     if new_token["ok"] is False:
                         return send_invalid_error(new_token["error"])

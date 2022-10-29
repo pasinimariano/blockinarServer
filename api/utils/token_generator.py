@@ -2,12 +2,10 @@ import jwt
 from datetime import datetime, timedelta
 from dotenv import dotenv_values
 
-ENV = dotenv_values()
-SECRET_KEY = ENV["SECRET_KEY"]
 
-
-def token_generator(email):
+def token_generator(email, api):
     try:
+        secret_key = api.config.get("SECRET_KEY")
         payload = {
             "exp": datetime.utcnow() + timedelta(minutes=40),
             "iat": datetime.utcnow(),
@@ -16,7 +14,7 @@ def token_generator(email):
 
         token = jwt.encode(
             payload,
-            SECRET_KEY,
+            secret_key,
             algorithm="HS256"
         )
 

@@ -56,7 +56,7 @@ def login_admin_controller(api):
                     if password_validator is False:
                         return send_invalid_error("Incorrect password")
 
-                    token = token_generator(email)
+                    token = token_generator(email, api)
 
                     if token["ok"] is False:
                         return send_invalid_error(token["error"])
