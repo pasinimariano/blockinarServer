@@ -42,6 +42,8 @@ BookingSchema = Schema.from_dict(
         "check_in_date": fields.DateTime(),
         "check_out_date": fields.DateTime(),
         "number_of_guests": fields.Int(),
-        "price_per_night": fields.Int()
+        "price_per_night": fields.Int(),
+        "room": fields.Nested(RoomsSchema),
+        "booking_status": fields.Nested(StatusSchema)
     }
 )
