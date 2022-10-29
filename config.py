@@ -1,14 +1,13 @@
-from os import environ
-from dotenv import dotenv_values
+import os
+from dotenv import load_dotenv
 
-ENV = dotenv_values()
+load_dotenv()
 
 
 class Config:
-    SECRET_KEY = ENV["SECRET_KEY"]
-    SESSION_COOKIE_NAME = environ.get("SESSION_COOKIE_NAME")
-    SQLALCHEMY_DATABASE_URI = ENV["SQLALCHEMY_DATABASE_URI"]
-    ENVIRONMENT = ENV["ENVIRONMENT"]
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
+    ENVIRONMENT = os.environ.get("ENVIRONMENT")
 
 
 class ProdConfig(Config):
@@ -21,4 +20,3 @@ class DevConfig(Config):
     ENV = "development"
     DEBUG = True
     TESTING = True
-    PORT = 3001

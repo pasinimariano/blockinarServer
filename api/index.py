@@ -1,18 +1,16 @@
 from flask import Flask
 from flask_cors import CORS
-from dotenv import dotenv_values
 
 from api.db.models import db
 from api.routes.index import get_routes
 
-ENV = dotenv_values()
 
 api = Flask(__name__)
 CORS(api)
 
-if api.config.get("ENVIRONMENT") == "development":
-    api.config.from_object("config.DevConfig")
+api.config.from_object("config.DevConfig")
 
+if api.config.get("ENVIRONMENT") == "development":
     db.init_app(api)
 
     with api.app_context():
