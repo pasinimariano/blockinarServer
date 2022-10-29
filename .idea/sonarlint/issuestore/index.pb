@@ -59,5 +59,3 @@ $api/controllers/rooms_controllers.py,1/8/18c89df0871bed3f0a8bb9356b96a82d76cce
 api/config.py,a/3/a3fb1b383c3b498daaabedc2b5a223d2b85bef65
 @
 requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
-<
-api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060
