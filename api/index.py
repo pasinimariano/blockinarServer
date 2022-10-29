@@ -9,10 +9,9 @@ api = Flask(__name__)
 CORS(api)
 
 api.config.from_object("config.DevConfig")
+db.init_app(api)
 
 if api.config.get("ENVIRONMENT") == "development":
-    db.init_app(api)
-
     with api.app_context():
         db.create_all()
 
