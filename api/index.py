@@ -8,11 +8,12 @@ from api.routes.index import get_routes
 api = Flask(__name__)
 CORS(api)
 
-api.config.from_object("config.DevConfig")
+api.config.from_object("config.Config")
+db.init_app(api)
+
 
 if api.config.get("ENVIRONMENT") == "development":
-    db.init_app(api)
-
+    api.config.from_object("config.DevConfig")
     with api.app_context():
         db.create_all()
 
