@@ -29,8 +29,6 @@ O
 api/services/BookingsService.py,6/0/605e557ccb7497b9bd37b9f088728a9d6140aa60
 K
 api/schemas/rooms_schema.py,0/9/093cc21bdbe7477736a32959caec10b988c93ad1
-@
-requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
 8
 Procfile,b/c/bc3c68e880d1a01632bce79f69dd1387c7ba9c54
 Q
