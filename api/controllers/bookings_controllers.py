@@ -9,13 +9,25 @@ from api.db.marshmallows import BookingSchema
 marshmallow = BookingSchema(many=True)
 
 
-def get_all_rooms_controller(api):
+def get_all_bookings_controller(api):
     def decorator(func):
         @wraps(func)
         def wrapper():
             with api.app_context():
                 try:
-                    service = BookingsService()
+                    check_in_date = request.args.get("check_in")
+                    booking_id = request.args.get("booking_id")
+                    last_name = request.args.get("last_name")
+
+                    if check_in_date is not None:
+                        service = BookingsService(check_in_date=check_in_date)
+                    elif booking_id is not None:
+                        service = BookingsService(booking_id=booking_id)
+                    elif last_name is not None:
+                        service = BookingsService(last_name=last_name)
+                    else:
+                        service = BookingsService()
+
                     token = request.headers.get('token')
                     email = token_decode(token)
 

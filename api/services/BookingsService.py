@@ -1,4 +1,5 @@
 from api.db.models import Bookings, db
+from sqlalchemy import and_, func
 
 
 class BookingsService:
@@ -16,7 +17,14 @@ class BookingsService:
 
     def get_all_bookings(self):
         try:
-            bookings = Bookings.query.all()
+            if self.check_in_date is not None:
+                bookings = Bookings.query.filter(func.date(Bookings.check_in_date) == func.date(self.check_in_date))
+            elif self.booking_id is not None:
+                bookings = Bookings.query.filter_by(id=self.booking_id).first()
+            elif self.last_name is not None:
+                bookings = Bookings.query.filter_by(last_name=self.last_name).first()
+            else:
+                bookings = Bookings.query.all()
 
             return {"ok": True, "bookings": bookings}
         except Exception as error:

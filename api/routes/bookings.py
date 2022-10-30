@@ -3,7 +3,7 @@ from flask import make_response, jsonify
 from api.middlewares.data_validator import data_validator
 from api.middlewares.token_validator import token_validator
 from api.schemas.bookings_schemas import create_booking_schema
-from api.controllers.bookings_controllers import get_all_rooms_controller, \
+from api.controllers.bookings_controllers import get_all_bookings_controller, \
     create_booking_controller, \
     update_booking_controller, \
     delete_booking_controller
@@ -12,7 +12,7 @@ from api.controllers.bookings_controllers import get_all_rooms_controller, \
 def bookings_routes(api):
     @api.route("/bookings", methods=["GET"])
     @token_validator(api)
-    @get_all_rooms_controller(api)
+    @get_all_bookings_controller(api)
     def get_all_bookings(response):
         return make_response(
             response,

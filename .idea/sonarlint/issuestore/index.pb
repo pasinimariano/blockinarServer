@@ -11,8 +11,6 @@ L
 api/services/RoomsService.py,5/a/5a676d17bd9354bfe0ffe9e14c6a240481c42a63
 C
 api/routes/index.py,6/7/67f09bb5a40fcce7000b36597da6f717d1b215b1
-D
-api/routes/admins.py,7/6/76163705cb4c5e30c15642cf480b9ca76a1cc306
 F
 api/db/marshmallows.py,e/0/e08d509ab25cccedbb9ea70549d08075756e085e
 L
@@ -25,16 +23,12 @@ O
 api/schemas/bookings_schemas.py,4/a/4a59644fd700ee2920a59046bef377e786a77266
 @
 api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
-O
-api/services/BookingsService.py,6/0/605e557ccb7497b9bd37b9f088728a9d6140aa60
 K
 api/schemas/rooms_schema.py,0/9/093cc21bdbe7477736a32959caec10b988c93ad1
 8
 Procfile,b/c/bc3c68e880d1a01632bce79f69dd1387c7ba9c54
 Q
 !api/middlewares/data_validator.py,4/1/41d2bd64bec43f095eb27b770db892970c5be704
-L
-api/services/AdminService.py,4/a/4a15e98a41190822d7ea64a2a5ac69fffb87a0ee
 H
 api/routes/categories.py,b/4/b436e99314c0af36df3bcf35d367ae268f0c03b3
 C
@@ -43,18 +37,10 @@ D
 api/routes/status.py,7/a/7a7b3344cfa87cdd77848667af0266f21f6809a1
 Y
 )api/controllers/categories_controllers.py,e/9/e936924ce1d3b69a84821f5106f1605b30b14be9
-T
-$api/controllers/rooms_controllers.py,1/8/18c89df0871bed3f0a8bb9356b96a82d76cce07a
 U
 %api/controllers/status_controllers.py,8/c/8cd3f2fd4e1e8624e4d7885f305b9bc755c9417a
 L
 api/utils/token_generator.py,1/4/14f6f476cefb3b5880b99c8448c13cd86c9c5e53
-U
-%api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
-W
-'api/controllers/bookings_controllers.py,e/b/eb3aec6ca9b2dfe8a5e3b79901d161ee2a27f096
-F
-api/routes/bookings.py,7/8/789a18ba4f2af212d06b86275e5356a8eac39e05
 R
 "api/middlewares/token_validator.py,1/e/1e98abfc9d16ce5fa8f6b9c3a02938e267f1c8e0
 8
