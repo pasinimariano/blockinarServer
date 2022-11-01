@@ -35,7 +35,7 @@ class StatusService:
 
     def update_status(self):
         try:
-            status = Status.query.filter_by(id=self.status_id).all()
+            status = Status.query.filter_by(id=self.status_id).first()
             status.booking_status = self.booking_status
 
             db.session.commit()
@@ -49,7 +49,7 @@ class StatusService:
 
     def delete_status(self):
         try:
-            status = Status.query.filter_by(id=self.status_id).all()
+            status = Status.query.filter_by(id=self.status_id).first()
 
             db.session.delete(status)
             db.session.commit()

@@ -68,7 +68,7 @@ class BookingsService:
         room = self.room_id if self.room_id.isnumeric() else None
 
         try:
-            booking = Bookings.query.filter_by(id=self.booking_id).all()
+            booking = Bookings.query.filter_by(id=self.booking_id).first()
             booking.first_name = self.first_name
             booking.last_name = self.last_name
             booking.check_in_date = self.check_in_date
@@ -89,7 +89,7 @@ class BookingsService:
 
     def delete_booking(self):
         try:
-            booking = Bookings.query.filter_by(id=self.booking_id).all()
+            booking = Bookings.query.filter_by(id=self.booking_id).first()
 
             db.session.delete(booking)
             db.session.commit()

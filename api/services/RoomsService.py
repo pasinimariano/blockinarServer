@@ -40,7 +40,7 @@ class RoomsService:
 
     def update_room(self):
         try:
-            room = Rooms.query.filter_by(id=self.room_id).all()
+            room = Rooms.query.filter_by(id=self.room_id).first()
             room.occupancy = self.occupancy
             room.max_occupancy = self.max_occupancy
             room.category_id = self.category_id
@@ -56,7 +56,7 @@ class RoomsService:
 
     def delete_room(self):
         try:
-            room = Rooms.query.filter_by(id=self.room_id).all()
+            room = Rooms.query.filter_by(id=self.room_id).first()
 
             db.session.delete(room)
             db.session.commit()
