@@ -57,3 +57,9 @@ O
 api/schemas/bookings_schemas.py,4/a/4a59644fd700ee2920a59046bef377e786a77266
 U
 %api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
+Q
+!api/services/CategoriesService.py,8/c/8c10f20fe87dfbbee8f1a35b0af0cbb934e190e2
+L
+api/services/RoomsService.py,5/a/5a676d17bd9354bfe0ffe9e14c6a240481c42a63
+M
+api/services/StatusService.py,0/b/0b3eac52ccd107db79961aebf637bad0f30b3eeb

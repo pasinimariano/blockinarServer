@@ -35,8 +35,6 @@ class BookingsService:
 
     def create_new_booking(self):
         try:
-            date_in = "{}T{}".format(self.check_in_date[0:10], self.check_in_date[10:])
-            date_out = "{}T{}".format(self.check_out_date[0:10], self.check_out_date[10:])
             guests = self.number_of_guests if self.number_of_guests.isnumeric() else None
             price = self.price_per_night if self.price_per_night.isnumeric() else None
             status = self.status_id if self.status_id.isnumeric() else 1
@@ -45,8 +43,8 @@ class BookingsService:
             booking = Bookings(
                 first_name=self.first_name,
                 last_name=self.last_name,
-                check_in_date=date_in,
-                check_out_date=date_out,
+                check_in_date=self.check_in_date,
+                check_out_date=self.check_out_date,
                 number_of_guests=guests,
                 price_per_night=price,
                 status_id=status,
@@ -64,8 +62,6 @@ class BookingsService:
             return {"ok": False, "error": error}
 
     def update_booking(self):
-        date_in = "{}T{}".format(self.check_in_date[0:10], self.check_in_date[10:])
-        date_out = "{}T{}".format(self.check_out_date[0:10], self.check_out_date[10:])
         guests = self.number_of_guests if self.number_of_guests.isnumeric() else None
         price = self.price_per_night if self.price_per_night.isnumeric() else None
         status = self.status_id if self.status_id.isnumeric() else 1
@@ -75,8 +71,8 @@ class BookingsService:
             booking = Bookings.query.filter_by(id=self.booking_id).all()
             booking.first_name = self.first_name
             booking.last_name = self.last_name
-            booking.check_in_date = date_in
-            booking.check_out_date = date_out
+            booking.check_in_date = self.check_in_date
+            booking.check_out_date = self.check_out_date
             booking.number_of_guests = guests
             booking.price_per_night = price
             booking.status_id = status
