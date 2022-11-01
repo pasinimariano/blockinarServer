@@ -51,3 +51,17 @@ D
 api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
 U
 %api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
+O
+api/schemas/bookings_schemas.py,4/a/4a59644fd700ee2920a59046bef377e786a77266
+F
+api/routes/bookings.py,7/8/789a18ba4f2af212d06b86275e5356a8eac39e05
+M
+api/services/StatusService.py,0/b/0b3eac52ccd107db79961aebf637bad0f30b3eeb
+L
+api/services/RoomsService.py,5/a/5a676d17bd9354bfe0ffe9e14c6a240481c42a63
+Q
+!api/services/CategoriesService.py,8/c/8c10f20fe87dfbbee8f1a35b0af0cbb934e190e2
+L
+api/services/AdminService.py,4/a/4a15e98a41190822d7ea64a2a5ac69fffb87a0ee
+W
+'api/controllers/bookings_controllers.py,e/b/eb3aec6ca9b2dfe8a5e3b79901d161ee2a27f096
