@@ -1,7 +1,7 @@
 regex_number = r'^(\s*|\d+)$'
 regex_letters = r'[A-z ]+'
-regex_dates = "^(?:\\d{4})-(?:\\d{2})-(?:\\d{2})(?:\\d{2})T" \
-              ":(?:\\d{2}):(?:\\d{2}(?:\\.\\d*)?)(?:(?:-(?:\\d{2}):(?:\\d{2})|Z)?)$"
+regex_dates = "^(?:\\d{4})-(?:\\d{2})-(?:\\d{2})T(?:\\d{2}):(?:\\d{2})" \
+              ":(?:\\d{2}(?:\\.\\d*)?)(?:(?:-(?:\\d{2}):(?:\\d{2})|Z)?)$"
 
 create_booking_schema = {
     "first_name": {"minlength": 2, "maxlength": 60, "required": True, "regex": regex_letters},
