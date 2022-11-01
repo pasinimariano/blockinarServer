@@ -15,7 +15,7 @@ def admins_routes(api):
             200
         )
 
-    @api.route("/admin/login", methods=["GET"])
+    @api.route("/admin/login", methods=["POST"])
     @data_validator(login_admin_schema)
     @login_admin_controller(api)
     def login_admin(response):

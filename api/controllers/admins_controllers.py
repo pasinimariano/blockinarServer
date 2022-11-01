@@ -51,6 +51,9 @@ def login_admin_controller(api):
                     if res["ok"] is False:
                         return send_invalid_error(res["error"])
 
+                    if res["admin"] is None:
+                        return send_invalid_error("Incorrect Admin account")
+
                     password_validator = check_password(password, res["admin"].password)
 
                     if password_validator is False:
