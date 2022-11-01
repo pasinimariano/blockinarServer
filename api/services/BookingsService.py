@@ -1,4 +1,5 @@
-from api.db.models import Bookings, db
+from api.db.models import Bookings, Rooms, Status, db
+from api.db.marshmallows import StatusSchema
 from sqlalchemy import and_, func
 
 
@@ -18,7 +19,11 @@ class BookingsService:
     def get_all_bookings(self):
         try:
             if self.check_in_date is not None:
-                bookings = Bookings.query.filter(func.date(Bookings.check_in_date) == func.date(self.check_in_date))
+                day_bookings = Bookings.query\
+                    .filter(func.date(Bookings.check_in_date) == func.date(self.check_in_date)).all()
+                checked = Bookings.query.filter_by(status_id=3).all()
+                bookings = day_bookings + checked
+
             elif self.booking_id is not None:
                 bookings = Bookings.query.filter_by(id=self.booking_id).all()
             elif self.last_name is not None:
@@ -62,10 +67,24 @@ class BookingsService:
             return {"ok": False, "error": error}
 
     def update_booking(self):
-        guests = self.number_of_guests if self.number_of_guests.isnumeric() else None
-        price = self.price_per_night if self.price_per_night.isnumeric() else None
+        guests = self.number_of_guests if type(self.number_of_guests) == int else None
+        price = self.price_per_night if type(self.price_per_night) == int else None
         status = self.status_id if type(self.status_id) == int else 1
         room = self.room_id if type(self.room_id) == int else None
+        get_status = {}
+
+        if status is not None:
+            status_schema = StatusSchema()
+            filter_status = Status.query.filter_by(id=status).first()
+            get_status = status_schema.dump(filter_status)
+
+        if get_status["booking_status"] == "Checked In" and room is not None:
+            room_occupancy = Rooms.query.filter_by(id=self.room_id).first()
+            room_occupancy.occupancy = 1
+
+        if get_status["booking_status"] == "Checked Out":
+            room_occupancy = Rooms.query.filter_by(id=self.room_id).first()
+            room_occupancy.occupancy = 0
 
         try:
             booking = Bookings.query.filter_by(id=self.booking_id).first()
