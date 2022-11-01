@@ -35,10 +35,10 @@ class BookingsService:
 
     def create_new_booking(self):
         try:
-            guests = self.number_of_guests if self.number_of_guests.isnumeric() else None
-            price = self.price_per_night if self.price_per_night.isnumeric() else None
-            status = self.status_id if self.status_id.isnumeric() else 1
-            room = self.room_id if self.room_id.isnumeric() else None
+            guests = self.number_of_guests if type(self.number_of_guests) == int else None
+            price = self.price_per_night if type(self.price_per_night) == int else None
+            status = self.status_id if type(self.status_id) == int else 1
+            room = self.room_id if type(self.status_id) == int else None
 
             booking = Bookings(
                 first_name=self.first_name,
@@ -64,8 +64,8 @@ class BookingsService:
     def update_booking(self):
         guests = self.number_of_guests if self.number_of_guests.isnumeric() else None
         price = self.price_per_night if self.price_per_night.isnumeric() else None
-        status = self.status_id if self.status_id.isnumeric() else 1
-        room = self.room_id if self.room_id.isnumeric() else None
+        status = self.status_id if type(self.status_id) == int else 1
+        room = self.room_id if type(self.status_id) == int else None
 
         try:
             booking = Bookings.query.filter_by(id=self.booking_id).first()

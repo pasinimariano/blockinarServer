@@ -43,15 +43,11 @@ R
 	config.py,1/a/1a1b9769344cb239f2e540e1e6ee1efa2d3034ea
 @
 requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
-F
-api/routes/bookings.py,7/8/789a18ba4f2af212d06b86275e5356a8eac39e05
 T
 $api/controllers/rooms_controllers.py,1/8/18c89df0871bed3f0a8bb9356b96a82d76cce07a
 D
 api/routes/admins.py,7/6/76163705cb4c5e30c15642cf480b9ca76a1cc306
 @
 api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
-L
-api/services/AdminService.py,4/a/4a15e98a41190822d7ea64a2a5ac69fffb87a0ee
 U
 %api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
