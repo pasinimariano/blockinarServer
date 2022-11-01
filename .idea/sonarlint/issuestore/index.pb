@@ -53,8 +53,6 @@ D
 api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
 L
 api/services/AdminService.py,4/a/4a15e98a41190822d7ea64a2a5ac69fffb87a0ee
-O
-api/schemas/bookings_schemas.py,4/a/4a59644fd700ee2920a59046bef377e786a77266
 U
 %api/controllers/admins_controllers.py,1/7/17fb878d1dd05a4f0c0c107801345f5d0327b9c4
 Q
