@@ -37,7 +37,7 @@ class CategoriesService:
 
     def update_category(self):
         try:
-            category = Categories.query.filter_by(id=self.category_id).first()
+            category = Categories.query.filter_by(id=self.category_id).all()
             category.category_name = self.category_name
             category.price = self.price
 
@@ -52,7 +52,7 @@ class CategoriesService:
 
     def delete_category(self):
         try:
-            category = Categories.query.filter_by(id=self.category_id).first()
+            category = Categories.query.filter_by(id=self.category_id).all()
 
             db.session.delete(category)
             db.session.commit()
