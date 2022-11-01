@@ -11,6 +11,8 @@ class CategoriesService:
         try:
             categories = Categories.query.all()
 
+            db.session.commit()
+
             return {"ok": True, "categories": categories}
         except Exception as error:
             print(" * Error when trying to get Categories")

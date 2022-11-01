@@ -10,6 +10,8 @@ class StatusService:
         try:
             status = Status.query.all()
 
+            db.session.commit()
+
             return {"ok": True, "status": status}
         except Exception as error:
             print(" * Error when trying to get Categories")

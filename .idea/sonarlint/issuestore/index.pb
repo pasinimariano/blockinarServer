@@ -1,14 +1,8 @@
 
-M
-api/services/StatusService.py,0/b/0b3eac52ccd107db79961aebf637bad0f30b3eeb
-Q
-!api/services/CategoriesService.py,8/c/8c10f20fe87dfbbee8f1a35b0af0cbb934e190e2
 J
 api/utils/hash_password.py,6/e/6e27c7de330c1c222ba2c1514a0941cce4c92f15
 H
 api/utils/send_errors.py,1/c/1c118e0f916e1354cfa3649385aeb40999e75b02
-L
-api/services/RoomsService.py,5/a/5a676d17bd9354bfe0ffe9e14c6a240481c42a63
 C
 api/routes/index.py,6/7/67f09bb5a40fcce7000b36597da6f717d1b215b1
 F
@@ -21,8 +15,6 @@ M
 api/schemas/status_schemas.py,6/e/6e83e5b043d83bf8f816594425b9b80bdba50660
 O
 api/schemas/bookings_schemas.py,4/a/4a59644fd700ee2920a59046bef377e786a77266
-@
-api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
 K
 api/schemas/rooms_schema.py,0/9/093cc21bdbe7477736a32959caec10b988c93ad1
 8
@@ -57,9 +49,5 @@ F
 api/routes/bookings.py,7/8/789a18ba4f2af212d06b86275e5356a8eac39e05
 T
 $api/controllers/rooms_controllers.py,1/8/18c89df0871bed3f0a8bb9356b96a82d76cce07a
-L
-api/services/AdminService.py,4/a/4a15e98a41190822d7ea64a2a5ac69fffb87a0ee
 W
 'api/controllers/bookings_controllers.py,e/b/eb3aec6ca9b2dfe8a5e3b79901d161ee2a27f096
-O
-api/services/BookingsService.py,6/0/605e557ccb7497b9bd37b9f088728a9d6140aa60

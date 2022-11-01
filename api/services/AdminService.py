@@ -34,6 +34,8 @@ class AdminService:
         try:
             admin = Admin.query.filter_by(email=self.email).first()
 
+            db.session.commit()
+
             print(" * Get Admin successfully")
             return {"ok": True, "admin": admin}
 

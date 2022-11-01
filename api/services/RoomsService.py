@@ -13,6 +13,8 @@ class RoomsService:
         try:
             rooms = Rooms.query.all()
 
+            db.session.commit()
+
             return {"ok": True, "rooms": rooms}
         except Exception as error:
             print(" * Error when trying to get Rooms")

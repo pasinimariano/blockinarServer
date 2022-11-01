@@ -26,6 +26,8 @@ class BookingsService:
             else:
                 bookings = Bookings.query.all()
 
+            db.session.commit()
+
             return {"ok": True, "bookings": bookings}
         except Exception as error:
             print(" * Error when trying to get Bookings")
