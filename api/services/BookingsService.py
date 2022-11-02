@@ -22,7 +22,7 @@ class BookingsService:
                 day_bookings = Bookings.query\
                     .filter(func.date(Bookings.check_in_date) == func.date(self.check_in_date)).all()
                 checked = Bookings.query.filter_by(status_id=3).all()
-                bookings = day_bookings + checked
+                bookings = list(set(day_bookings + checked))
 
             elif self.booking_id is not None:
                 bookings = Bookings.query.filter_by(id=self.booking_id).all()
