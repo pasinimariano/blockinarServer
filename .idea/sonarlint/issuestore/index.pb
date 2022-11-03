@@ -33,12 +33,8 @@ R
 "api/middlewares/token_validator.py,1/e/1e98abfc9d16ce5fa8f6b9c3a02938e267f1c8e0
 8
 setup.py,8/e/8e2edce0d507e1297474f25c00cae94258db38d8
-7
-main.py,f/1/f1bdda93d9a278e358509d498e17d97764c1fb29
 <
 api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060
-@
-requirements.txt,1/9/19359a61ae2446b51b549167b014da2fcf265768
 D
 api/routes/admins.py,7/6/76163705cb4c5e30c15642cf480b9ca76a1cc306
 U
@@ -63,3 +59,5 @@ Q
 api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
 T
 $api/controllers/rooms_controllers.py,1/8/18c89df0871bed3f0a8bb9356b96a82d76cce07a
+9
+	config.py,1/a/1a1b9769344cb239f2e540e1e6ee1efa2d3034ea

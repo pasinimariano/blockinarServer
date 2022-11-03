@@ -1,6 +1,7 @@
 from api.db.models import Bookings, Rooms, Status, db
 from api.db.marshmallows import StatusSchema
 from sqlalchemy import and_, func
+from datetime import datetime
 
 
 class BookingsService:
@@ -21,7 +22,8 @@ class BookingsService:
             if self.check_in_date is not None:
                 day_bookings = Bookings.query\
                     .filter(func.date(Bookings.check_in_date) == func.date(self.check_in_date)).all()
-                checked = Bookings.query.filter_by(status_id=3).all()
+                checked = Bookings.query.filter_by(status_id=3)\
+                    .filter(func.date(Bookings.check_in_date) < self.check_in_date).all()
                 bookings = list(set(day_bookings + checked))
 
             elif self.booking_id is not None:
