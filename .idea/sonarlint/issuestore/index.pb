@@ -15,8 +15,6 @@ M
 api/schemas/status_schemas.py,6/e/6e83e5b043d83bf8f816594425b9b80bdba50660
 K
 api/schemas/rooms_schema.py,0/9/093cc21bdbe7477736a32959caec10b988c93ad1
-8
-Procfile,b/c/bc3c68e880d1a01632bce79f69dd1387c7ba9c54
 Q
 !api/middlewares/data_validator.py,4/1/41d2bd64bec43f095eb27b770db892970c5be704
 C
@@ -31,8 +29,6 @@ L
 api/utils/token_generator.py,1/4/14f6f476cefb3b5880b99c8448c13cd86c9c5e53
 R
 "api/middlewares/token_validator.py,1/e/1e98abfc9d16ce5fa8f6b9c3a02938e267f1c8e0
-8
-setup.py,8/e/8e2edce0d507e1297474f25c00cae94258db38d8
 <
 api/index.py,f/f/ff216a8333bc37ec33e6bcca4705fa036a164060
 D
@@ -59,5 +55,3 @@ Q
 api/db/models.py,4/0/402063606162c58bc5d24a24d989b73f61bf20bd
 T
 $api/controllers/rooms_controllers.py,1/8/18c89df0871bed3f0a8bb9356b96a82d76cce07a
-9
-	config.py,1/a/1a1b9769344cb239f2e540e1e6ee1efa2d3034ea
