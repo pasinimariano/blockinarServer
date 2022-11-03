@@ -22,9 +22,16 @@ class BookingsService:
             if self.check_in_date is not None:
                 day_bookings = Bookings.query\
                     .filter(func.date(Bookings.check_in_date) == func.date(self.check_in_date)).all()
-                checked = Bookings.query.filter_by(status_id=3)\
-                    .filter(func.date(Bookings.check_in_date) < self.check_in_date).all()
-                bookings = list(set(day_bookings + checked))
+                checked = Bookings.query.filter_by(status_id=3).all()
+                format_checked = []
+                split_date = self.check_in_date.split("-")
+
+                for booking in checked:
+                    if datetime(int(split_date[0]), int(split_date[1]), int(split_date[2])).date() >= \
+                            booking.check_in_date.date():
+                        format_checked.append(booking)
+
+                bookings = list(set(day_bookings + format_checked))
 
             elif self.booking_id is not None:
                 bookings = Bookings.query.filter_by(id=self.booking_id).all()
